@@ -43,6 +43,43 @@ export default function RegistrationForm() {
         )}
       </div>
 
+            <div style={{ marginBottom: 12 }}>
+        <label>Email</label>
+        <br />
+        <input
+          {...register("email", {
+            required: "Email обязателен",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Некорректный email",
+            },
+          })}
+        />
+
+        {errors.email && (
+          <p style={{ color: "crimson" }}>{errors.email.message}</p>
+        )}
+      </div>
+
+              <div style={{ marginBottom: 12 }}>
+        <label>First Name</label>
+        <br />
+        <input
+          {...register("firstName", {
+            required: "Имя обязательно",
+            minLength: { value: 2, message: "Минимум 2 символа" },
+            pattern: {
+              value: /^[A-Za-zА-Яа-яЁё]+$/,
+              message: "Только буквы (кириллица или латиница)",
+            },
+          })}
+        />
+        {errors.firstName && (
+          <p style={{ color: "crimson" }}>{errors.firstName.message}</p>
+        )}
+      </div>
+
+
       <button type="submit">Submit</button>
     </form>
   );
