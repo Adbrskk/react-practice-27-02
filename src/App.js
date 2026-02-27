@@ -1,5 +1,7 @@
+import RegistrationForm from "./components/RegistrationForm";
+
 function App() {
-  return <div style={{ padding: 40, fontSize: 24 }}>TEST APP</div>;
+  return <RegistrationForm />;
 }
 
 export default App;
