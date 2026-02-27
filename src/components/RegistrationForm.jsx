@@ -18,9 +18,28 @@ export default function RegistrationForm() {
       <div style={{ marginBottom: 12 }}>
         <label>Username</label>
         <br />
-        <input {...register("username", { required: "Логин обязателен" })} />
+        <input
+          {...register("username", {
+            required: "Логин обязателен",
+            minLength: {
+              value: 4,
+              message: "Минимум 4 символа",
+            },
+            maxLength: {
+              value: 20,
+              message: "Максимум 20 символов",
+            },
+            pattern: {
+              value: /^[A-Za-z0-9_]+$/,
+              message: "Только латиница, цифры и _",
+            },
+          })}
+        />
+
         {errors.username && (
-          <p style={{ color: "crimson" }}>{errors.username.message}</p>
+          <p style={{ color: "crimson" }}>
+            {errors.username.message}
+          </p>
         )}
       </div>
 
